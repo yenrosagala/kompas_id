@@ -3,9 +3,6 @@
 
 # # SCRAPING BERITA DARI KOMPAS.ID
 
-# In[46]:
-
-
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -15,8 +12,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # # Konten yang dicari
-
-# In[47]:
 
 
 Options = webdriver.ChromeOptions()
@@ -29,9 +24,6 @@ driver = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
 doc = driver.get(f'https://www.kompas.id/label/{input_user}')
 
 
-# In[48]:
-
-
 #load more
 for i in range(10):
     try:
@@ -42,8 +34,6 @@ for i in range(10):
 
 
 # Untuk memperoleh link berita dan judul berita
-
-# In[49]:
 
 
 links = []
@@ -63,8 +53,6 @@ driver.quit()
 
 
 # #memperoleh isi konten, dengan menggunakan link berita
-
-# In[51]:
 
 
 import requests
@@ -95,9 +83,6 @@ df_berita.to_csv(f'Judul dan isi berita_tentang_{input_user}.csv')
 
 
 # Membuat wordclout dari isi berita
-
-# In[52]:
-
 
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
